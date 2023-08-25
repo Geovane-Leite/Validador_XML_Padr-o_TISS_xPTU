@@ -6,7 +6,12 @@ import os
 import re
 from mtranslate import translate
 from tkinter import Tk
+import os
 
+# Obtém o caminho completo do script em execução
+script_path = os.path.abspath(__file__)
+directory = os.path.dirname(script_path)
+dir_schemas = os.path.join(directory,'SCHEMAS')
 
 
 
@@ -24,9 +29,9 @@ janela.destroy()
 for xml_file_path in files:
     nome_do_arquivo = os.path.basename(xml_file_path)
    
-    schemas = r'\SCHEMAS'
+    schemas = dir_schemas 
 
-    correcoes = []  # Lista para armazenar as correções a serem aplicadas
+
 
     # Carrega o arquivo XML
     with open(xml_file_path, 'rb') as xml_file:
