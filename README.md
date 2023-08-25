@@ -1,6 +1,7 @@
-# Validador TISS e PTU Unimed: Garantindo Conformidade de Dados para Operadoras de Plano de Saúde
+<div style="font-family: Arial, sans-serif; font-size: 24px; color: #1E375F;">Validador TISS e PTU Unimed:</div>
+<div style="font-family: Arial, sans-serif; font-size: 18px; color: #1E375F;">Garantindo Conformidade de Dados para Operadoras de Plano de Saúde</div>
 
-Seja bem-vindo(a) ao Validador TISS e PTU Unimed! Este repositório contém uma ferramenta essencial para operadoras de planos de saúde e Unimeds que desejam assegurar a qualidade e conformidade dos dados nos arquivos XML no padrão TISS (Troca de Informações em Saúde Suplementar) e no padrão PTU (Padrão TISS Unimed). 
+Bem-vindo(a) ao **Validador TISS e PTU Unimed**! Este repositório contém uma ferramenta essencial para operadoras de planos de saúde e Unimeds que desejam assegurar a qualidade e conformidade dos dados nos arquivos XML no padrão **TISS** (Troca de Informações em Saúde Suplementar) e no padrão **PTU** (Padrão TISS Unimed).
 
 ## Recursos e Vantagens
 
