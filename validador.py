@@ -6,7 +6,6 @@ import os
 import re
 from mtranslate import translate
 from tkinter import Tk
-from tkinter.filedialog import askopenfilename
 
 
 
