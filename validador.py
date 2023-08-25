@@ -25,7 +25,7 @@ janela.destroy()
 for xml_file_path in files:
     nome_do_arquivo = os.path.basename(xml_file_path)
    
-    schemas = 'ESQUEMAS'
+    schemas = r'\SCHEMAS'
 
     correcoes = []  # Lista para armazenar as correções a serem aplicadas
 
