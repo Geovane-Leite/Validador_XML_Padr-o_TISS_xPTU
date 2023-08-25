@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2018 sp1 (x64) (http://www.altova.com) by  (Unimed do Brasil) -->
+<!--
+	Projeto: PTU XML
+	Versão: V1_0
+	TargetNameSpace: http://ptu.unimed.coop.br/schemas/V1_0
+	Autores:
+	Unimed do Brasil
+-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ptu="http://ptu.unimed.coop.br/schemas/V1_0" targetNamespace="http://ptu.unimed.coop.br/schemas/V1_0" elementFormDefault="qualified">
+	<include schemaLocation="ptu_ComplexTypes-V1_0.xsd"/>
+	<!-- ********************************************************A1350******************************************************************************************** -->
+	<element name="ptuA1350">
+		<annotation>
+			<documentation>A1350 - Atualização de dados pessoais do beneficiário</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ptu:ct_CabecalhoPTU"/>
+				<element name="arquivoA1350" type="ptu:ct_atualizacaoDadosBenef"/>
+				<element name="hash" type="ptu:st_texto32" minOccurs="1"/>
+				<element name="carimboCMB" type="ptu:ct_carimbo" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

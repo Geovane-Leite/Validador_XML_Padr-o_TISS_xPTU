@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2018 sp1 (x64) (http://www.altova.com) by  (Unimed do Brasil) -->
+<!--
+	Projeto: PTU XML
+	Versão: V1_0
+	TargetNameSpace: http://ptu.unimed.coop.br/schemas/V1_0
+	Autores:
+	Unimed do Brasil
+-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ptu="http://ptu.unimed.coop.br/schemas/V1_0" targetNamespace="http://ptu.unimed.coop.br/schemas/V1_0" elementFormDefault="qualified">
+	<include schemaLocation="ptu_ComplexTypes-V1_0.xsd"/>
+	<!-- ********************************************************A100 Simp******************************************************************************************** -->
+	<element name="ptuA100_Pos_UB">
+		<annotation>
+			<documentation>A100 - Movimentação Cadastral de Beneficiário _ Intercâmbio (Simplificado)</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho">
+					<complexType>
+						<complexContent>
+							<extension base="ptu:ct_CabecalhoPTU">
+								<sequence>
+									<element name="nr_transacao" type="ptu:st_numero10"/>
+								</sequence>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="arquivoA100" type="ptu:ct_pos3"/>
+				<element name="hash" type="ptu:st_texto32" minOccurs="1"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ptuA105">
+		<annotation>
+			<documentation>A105 - Retorno Movimentação Cadastral de Beneficiário _ Intercâmbio (Simplificado)</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho">
+					<complexType>
+						<complexContent>
+							<extension base="ptu:ct_CabecalhoPTU">
+								<sequence>
+									<element name="nr_transacao" type="ptu:st_numero10"/>
+								</sequence>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="hash" type="ptu:st_texto32" minOccurs="1"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2018 sp1 (x64) (http://www.altova.com) by  (Unimed do Brasil) -->
+<!--
+	Projeto: PTU XML
+	Versão: V1_0
+	TargetNameSpace: http://ptu.unimed.coop.br/schemas/V1_0
+	Autores:
+	Unimed do Brasil
+-->
+<definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ptu.unimed.coop.br/ptua100/webservices/V1_0" xmlns:ptu="http://ptu.unimed.coop.br/schemas/V1_0" xmlns:ns1="http://ptu.unimed.coop.br/schemas/V1_0" name="ptuA100" targetNamespace="http://ptu.unimed.coop.br/ptua100/webservices/V1_0">
+	<wsdl:types>
+		<xsi:schema xmlns:tns="http://ptu.unimed.coop.br/ptua100/webservices/V1_0" xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ptu="http://ptu.unimed.coop.br/schemas/V1_0" targetNamespace="http://ptu.unimed.coop.br/ptua100/webservices/V1_0">
+			<xsi:import namespace="http://ptu.unimed.coop.br/schemas/V1_0" schemaLocation="ptu_A100_Pos_UB.xsd"/>
+		</xsi:schema>
+	</wsdl:types>
+	<message name="ptuA100Request">
+		<part name="ptuA100Request" element="ptu:ptuA100_Pos_UB"/>
+	</message>
+	<message name="ptuA100Response">
+		<part name="ptuA100Response" element="ptu:ptuA105"/>
+	</message>
+	<portType name="ptuA100PortType">
+		<operation name="ptuA100Operation">
+			<input message="tns:ptuA100Request"/>
+			<output message="tns:ptuA100Response"/>
+		</operation>
+	</portType>
+	<binding name="ptuA100Binding" type="tns:ptuA100PortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="ptuA100Operation">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="ptuA100">
+		<port name="ptuA100Port" binding="tns:ptuA100Binding">
+			<soap:address/>
+		</port>
+	</service>
+</definitions>

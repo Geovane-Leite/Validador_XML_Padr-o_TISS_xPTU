@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2018 sp1 (x64) (http://www.altova.com) by  (Unimed do Brasil) -->
+<!--
+	Projeto: PTU XML
+	Versão: V1_0
+	TargetNameSpace: http://ptu.unimed.coop.br/schemas/V1_0
+	Autores:
+	Unimed do Brasil
+-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ptu="http://ptu.unimed.coop.br/schemas/V1_0" targetNamespace="http://ptu.unimed.coop.br/schemas/V1_0" elementFormDefault="qualified">
+	<include schemaLocation="ptu_ComplexTypes-V1_0.xsd"/>
+	<!-- ********************************************************A300******************************************************************************************** -->
+	<element name="ptuA300">
+		<annotation>
+			<documentation>A300 - Movimentação Cadastral de Beneficiário - Produtos</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho">
+					<complexType>
+						<complexContent>
+							<extension base="ptu:ct_CabecalhoPTU">
+								<sequence>
+									<element name="dt_Ini_Mov" type="ptu:st_data2"/>
+									<element name="dt_Fim_Mov" type="ptu:st_data2"/>
+									<element name="tp_Produto" type="ptu:st_Produtos"/>
+								</sequence>
+							</extension>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="arquivoA300" type="ptu:ct_dadosdoenvioA300"/>
+				<element name="hash" type="ptu:st_texto32" minOccurs="1"/>
+				<element name="carimboCMB" type="ptu:ct_carimbo" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

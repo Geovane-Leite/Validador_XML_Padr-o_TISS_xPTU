@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2018 sp1 (x64) (http://www.altova.com) by  (Unimed do Brasil) -->
+<!--
+	Projeto: PTU XML
+	Versão: V1_0
+	TargetNameSpace: http://ptu.unimed.coop.br/schemas/V1_0
+	Autores:
+	Unimed do Brasil
+-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ptu="http://ptu.unimed.coop.br/schemas/V1_0" targetNamespace="http://ptu.unimed.coop.br/schemas/V1_0" elementFormDefault="qualified">
+	<include schemaLocation="ptu_ComplexTypes-V1_0.xsd"/>
+	<!-- *******************************************************A800********************************************************************************************* -->
+	<element name="ptuA800">
+		<annotation>
+			<documentation>A800 - Faturamento Intercâmbio de Pré-Pagamento.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ptu:ct_Cabecalho_A800"/>
+				<element name="cobranca" type="ptu:ct_Cobranca_A800"/>
+				<element name="arquivoA800" type="ptu:ct_Cobranca_Benef_A800" maxOccurs="unbounded"/>
+				<element name="hash" type="ptu:st_texto32" minOccurs="1"/>
+				<element name="carimboCMB" type="ptu:ct_carimbo" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>
