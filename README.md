@@ -16,11 +16,8 @@ Otimo para que está com dificultade com a **Versão 4.01.00**
 2. Execute o validador, fornecendo o caminho para o arquivo XML que deseja validar.
 3. O validador analisará o arquivo e fornecerá feedback imediato sobre a conformidade ou quaisquer problemas encontrados.
 
-## Palavras-Chave (Hashtags)
 
-#ValidadorTISS #ValidadorPTUUnimed #OperadorasDePlanoDeSaude #ConformidadeTISS #PadraoPTU #Unimeds #TrocaDeInformacoesEmSaudeSuplementar #XML #ValidacaoEstrutural #ConformidadeRegulamentar #ProtocolodeTransaçõesUnimed #4.01.00 #1.04.00
-
-As operadoras de planos de saúde e Unimeds podem confiar em nosso validador para garantir a qualidade e a conformidade de seus arquivos XML, evitando erros e simplificando o processo de troca de informações em saúde suplementar. Estamos comprometidos em ajudar você a manter os mais altos padrões de qualidade e precisão nos seus processos.
+Estamos comprometidos em ajudar você a manter os mais altos padrões de qualidade e precisão nos seus processos.
 
 **Nota:** Este repositório destina-se a fins educacionais e de referência.
 
