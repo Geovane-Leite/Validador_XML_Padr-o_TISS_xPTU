@@ -2,6 +2,13 @@
 ## Validador TISS e PTU Unimed
 - Bem-vindo(a) ao  **Validador TISS e PTU** Este repositório contém uma ferramenta essencial para operadoras de planos de saúde e Unimeds que desejam assegurar a qualidade e conformidade dos dados nos arquivos XML no padrão **TISS** (Troca de Informações em Saúde Suplementar) e no padrão **PTU** (Protocolo de Transações Unimed).
 Otimo para que está com dificultade com a **Versão 4.01.00**
+
+## OPCIONAL PREMIUM -
+- **Correção de erros recorrentes:**
+- **Update com Critérios:**
+- **Atualização do HASH:**
+
+
 ## Recursos e Vantagens
 
 - **Validação de Estrutura:** Nosso validador verifica  se os arquivos XML estão seguindo a estrutura correta de acordo com os padrões TISS e PTU Unimed. Isso ajuda a evitar erros de formatação que podem levar a problemas de processamento e rejeição de arquivos.
