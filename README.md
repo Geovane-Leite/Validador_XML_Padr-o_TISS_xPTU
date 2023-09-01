@@ -5,8 +5,8 @@ Otimo para que está com dificultade com a **Versão 4.01.00**
 
 ## OPCIONAL PREMIUM - Automático
 - **Correção de erros recorrentes**
-- **Update de dados c/ Critérios**
-- **Atualização do HASH**
+- **Update de dados do XML c/ Critérios**
+- **Atualização do HASH no arquivo**
 
 
 ## Recursos e Vantagens
