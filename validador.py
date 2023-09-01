@@ -6,7 +6,6 @@ import os
 import re
 from mtranslate import translate
 from tkinter import Tk
-import os
 
 # Obtém o caminho completo do script em execução
 script_path = os.path.abspath(__file__)
