@@ -95,7 +95,7 @@ if xml_file_path:
             if hash_value == hash_md5.upper():
                 print('Hash Válido!')
             else:
-                print('Hash Atualizado: ', hash_md5.upper(), 'Hash Arquivo: ',hash_value)
+                print('Hash Calculado: ', hash_md5.upper(), 'Hash Arquivo: ',hash_value)
     elif prefixo == 'ptu':
             if hash_value == hash_md5:
                 print('Hash Válido!',)
