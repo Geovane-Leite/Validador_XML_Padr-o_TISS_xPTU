@@ -17,9 +17,11 @@ Otimo para que está com dificultade com a **Versão 4.01.00**
 
 - **Otimização para Unimeds:** Além da validação no padrão TISS, nosso validador também verifica especificamente os requisitos do padrão PTU utilizado pelas Unimeds. Isso é especialmente benéfico para as operadoras Unimed, facilitando o cumprimento das normas específicas da rede.
 
+- **Reconhecimento automático do XSD**
+
 ## Como Utilizar
 
-1. Faça o download ou clone este repositório.
+1. Faça o download deste repositorio.
 2. Execute o validador, fornecendo o caminho para o arquivo XML que deseja validar.
 3. O validador analisará o arquivo e fornecerá feedback imediato sobre a conformidade ou quaisquer problemas encontrados.
 
