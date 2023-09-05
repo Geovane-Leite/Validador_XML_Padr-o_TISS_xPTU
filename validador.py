@@ -27,11 +27,20 @@ for xml_file_path in files:
     with open(xml_file_path, 'rb') as xml_file:
         xml_content = xml_file.read()
 
+        tp_arquivo = str(xml_content).split(':')[1].split(' ')[0].replace('ptu','ptu_')
+
+        print("tipo arquivo",tp_arquivo)
+
         schema_location = re.search(r'xsi:schemaLocation="([^"]+)"', str(xml_content)).group(1)
-        # Extrai o nome do arquivo XSD
-        filename = re.search(r'/([^/]+\.xsd)$', schema_location).group(1)
+
+        try:
+            filename = re.search(r'/([^/]+\.xsd)$', schema_location).group(1)
+        except:
+            filename = schema_location
+        
         filename = filename.split('/')[-1]
         filename = filename.rsplit(" ", 1)[-1]
+        
 
         if 'tiss' in filename:
             prefixo = 'ans'
@@ -39,20 +48,31 @@ for xml_file_path in files:
             prefixo = 'ptu'
 
         root = etree.fromstring(xml_content)
+
         namespace = root.tag.split('}')[0][1:]
         if namespace == None:
             namespace = re.search(r'xmlns:ans="(.*?)"', xml_content).group(1)
             print(namespace)
 
-
-        # Carrega o arquivo XSD
-        xsd_arquivo = os.path.join(schemas, filename)
+     
+        schemas_1 = os.path.join(schemas, filename)
+        schemas_2 = os.path.join(schemas, tp_arquivo+'.xsd')
+        xsd_arquivo = os.path.join(schemas, tp_arquivo+'.xsd')
+        print(xsd_arquivo)
+        try:
+            if os.path.isfile(schemas_1):
+                xsd_arquivo = os.path.join(schemas, filename)
+        except:    
+            if os.path.isfile(schemas_2):
+                xsd_arquivo = os.path.join(schemas, tp_arquivo+'.xsd')
+                print('qwert ',xsd_arquivo)
         print("xsd_arquivo: ", filename)
+        print('xsd: ',xsd_arquivo)
         schema = XMLSchema(xsd_arquivo)
 
         # Valida o XML em relação ao XSD e obtém todos os erros
         errors = schema.iter_errors(root)
-        hash_element = root.find('{'+namespace+'}'+'hash')
+
         if errors:
             print(f'validação: {nome_do_arquivo}')
             for error in errors:
