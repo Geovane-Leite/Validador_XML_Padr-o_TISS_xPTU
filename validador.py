@@ -84,13 +84,19 @@ for xml_file_path in files:
 def extract_text(elem):
     text = ''
     hash_value = None
+    hash_nomespace = elem.tag.split("}")[0][1:]
+    
     for e in elem.iter():
-        
-        hash_nomespace = elem.tag.split("}")[0][1:]
-        if e.text and e.text != '\n' and e.tag != '{'+hash_nomespace+'}'+'hash':
+        if e.text and not e.text.isspace() \
+            and e.tag not in [
+                '{'+hash_nomespace+'}'+'hash',
+                '{'+hash_nomespace+'}'+'dt_postagem',
+                '{'+hash_nomespace+'}'+'nr_protocolo'
+            ]:
             text += e.text
         elif e.tag == '{'+hash_nomespace+'}'+'hash':
             hash_value = e.text
+    
     return text, hash_value
     
 if xml_file_path:
