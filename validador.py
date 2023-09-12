@@ -37,19 +37,45 @@ for xml_file_path in files:
             tp_arquivo3 = str(xml_content).split("<ptu:")[1].split(" ")[0].replace('ptu','ptu_')
        
 
+        filename = None
+       
         try:
             schema_location = re.search(r'xsi:schemaLocation="([^"]+)"', str(xml_content)).group(1)
         
             # Extrai o nome do arquivo XSD
             try:
                 filename = re.search(r'/([^/]+\.xsd)$', schema_location).group(1)
-            except:
                 filename = schema_location
-            
-            filename = filename.split('/')[-1]
-            filename = filename.rsplit(" ", 1)[-1]
-        except Exception:
-            schema_location = None
+                filename = filename.split('/')[-1]
+                filename = filename.rsplit(" ", 1)[-1]
+
+            #execção para arquivos que tem schemaLocation
+            except:
+                if 'ptu' in str(xml_content):
+                    try:
+                        filename = str(xml_content).split("\n<ptu")[1].split(" ")[0].replace('ptu','ptu_')
+                        filename = filename+'.xsd'
+                        print('wert',filename)
+                    except:
+                        try:
+                            filename = str(xml_content).split("<ptu:")[1].split(" ")[0].replace('ptu','ptu_')
+                            filename = filename+'.xsd'
+                            print('wert',filename)
+                        except:
+                            tp_arquivo3 = None
+        except:
+            if 'ptu' in str(xml_content):
+                try:
+                    filename = str(xml_content).split("\n<ptu")[1].split(" ")[0].replace('ptu','ptu_')
+                    filename = filename+'.xsd'
+                    print('wert',filename)
+                except:
+                    try:
+                        filename = str(xml_content).split("<ptu:")[1].split(" ")[0].replace('ptu','ptu_')
+                        filename = filename+'.xsd'
+                        print('wert',filename)
+                    except:
+                        tp_arquivo3 = None
         
 
         if 'tiss' in filename:
@@ -67,20 +93,12 @@ for xml_file_path in files:
 
      
         schemas_1 = os.path.join(schemas, filename)
-        schemas_2 = os.path.join(schemas, tp_arquivo+'.xsd')
-        schemas_3 = os.path.join(schemas, tp_arquivo2+'.xsd')
-        schemas_4 = os.path.join(schemas, tp_arquivo3+'.xsd')
 
         xsd_arquivo = None 
         # Verifique se cada arquivo existe e pare quando encontrar o primeiro válido
         if os.path.isfile(schemas_1):
             xsd_arquivo = schemas_1
-        elif os.path.isfile(schemas_2):
-            xsd_arquivo = schemas_2
-        elif os.path.isfile(schemas_3):
-            xsd_arquivo = schemas_3
-        elif os.path.isfile(schemas_4):
-            xsd_arquivo = schemas_4
+    
         elif xsd_arquivo == None:
             tp_arquivo_input = input('Não encontramos o schema, Qual Nome do arquivo XSD? ex: NNNNNN.xsd ')
             schemas_5 = os.path.join(schemas, tp_arquivo_input)
