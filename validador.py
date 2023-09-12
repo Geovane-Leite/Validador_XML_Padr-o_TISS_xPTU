@@ -27,9 +27,14 @@ for xml_file_path in files:
     with open(xml_file_path, 'rb') as xml_file:
         xml_content = xml_file.read()
 
-        tp_arquivo = str(xml_content).split(':')[1].split(' ')[0].replace('ptu','ptu_')
-        tp_arquivo2 = str(xml_content).split(r"\n<")[1].split(" ")[0].replace('ptu','ptu_')
-        tp_arquivo3 = str(xml_content).split(r"\n<ptu:")[1].split(" ")[0].replace('ptu','ptu_')
+        if ':' in str(xml_content):
+            tp_arquivo = str(xml_content).split(':')[1].split(' ')[0].replace('ptu','ptu_')
+        
+        elif '\n<' in str(xml_content):
+            tp_arquivo2 = str(xml_content).split(r"\n<")[1].split(" ")[0].replace('ptu','ptu_')
+        
+        elif '<ptu:' in str(xml_content):
+            tp_arquivo3 = str(xml_content).split("<ptu:")[1].split(" ")[0].replace('ptu','ptu_')
        
 
         schema_location = re.search(r'xsi:schemaLocation="([^"]+)"', str(xml_content)).group(1)
