@@ -27,55 +27,25 @@ for xml_file_path in files:
     with open(xml_file_path, 'rb') as xml_file:
         xml_content = xml_file.read()
 
-        if ':' in str(xml_content):
-            tp_arquivo = str(xml_content).split(':')[1].split(' ')[0].replace('ptu','ptu_')
-        
-        elif '\n<' in str(xml_content):
-            tp_arquivo2 = str(xml_content).split(r"\n<")[1].split(" ")[0].replace('ptu','ptu_')
-        
-        elif '<ptu:' in str(xml_content):
-            tp_arquivo3 = str(xml_content).split("<ptu:")[1].split(" ")[0].replace('ptu','ptu_')
-       
-
         filename = None
        
         try:
             schema_location = re.search(r'xsi:schemaLocation="([^"]+)"', str(xml_content)).group(1)
         
             # Extrai o nome do arquivo XSD
-            try:
-                filename = re.search(r'/([^/]+\.xsd)$', schema_location).group(1)
-                filename = schema_location
-                filename = filename.split('/')[-1]
-                filename = filename.rsplit(" ", 1)[-1]
-
-            #execção para arquivos que tem schemaLocation
-            except:
-                if 'ptu' in str(xml_content):
-                    try:
-                        filename = str(xml_content).split("\n<ptu")[1].split(" ")[0].replace('ptu','ptu_')
-                        filename = filename+'.xsd'
-                        print('wert',filename)
-                    except:
-                        try:
-                            filename = str(xml_content).split("<ptu:")[1].split(" ")[0].replace('ptu','ptu_')
-                            filename = filename+'.xsd'
-                            print('wert',filename)
-                        except:
-                            tp_arquivo3 = None
+        
+            filename = re.search(r'/([^/]+\.xsd)$', schema_location).group(1)
+            filename = filename.split('/')[-1]
+            filename = filename.rsplit(" ", 1)[-1]
+            
+        #Excessão quando não tem arquivo xsd informado no arquivo
         except:
-            if 'ptu' in str(xml_content):
-                try:
-                    filename = str(xml_content).split("\n<ptu")[1].split(" ")[0].replace('ptu','ptu_')
-                    filename = filename+'.xsd'
-                    print('wert',filename)
-                except:
-                    try:
-                        filename = str(xml_content).split("<ptu:")[1].split(" ")[0].replace('ptu','ptu_')
-                        filename = filename+'.xsd'
-                        print('wert',filename)
-                    except:
-                        tp_arquivo3 = None
+            if 'ptuA500' in str(xml_content):
+                filename = 'ptu_A500.xsd'
+            elif 'ptuA550' in str(xml_content):
+                filename = 'ptu_A550.xsd'
+            elif 'ptuA560' in str(xml_content):
+                filename = 'ptu_A560.xsd'
         
 
         if 'tiss' in filename:
@@ -92,17 +62,17 @@ for xml_file_path in files:
             print(namespace)
 
      
-        schemas_1 = os.path.join(schemas, filename)
+        dir_schemas = os.path.join(schemas, filename)
 
         xsd_arquivo = None 
         # Verifique se cada arquivo existe e pare quando encontrar o primeiro válido
-        if os.path.isfile(schemas_1):
-            xsd_arquivo = schemas_1
+        if os.path.isfile(dir_schemas):
+            xsd_arquivo = dir_schemas
     
         elif xsd_arquivo == None:
             tp_arquivo_input = input('Não encontramos o schema, Qual Nome do arquivo XSD? ex: NNNNNN.xsd ')
-            schemas_5 = os.path.join(schemas, tp_arquivo_input)
-            xsd_arquivo = schemas_5
+            dir_schemas_2 = os.path.join(schemas, tp_arquivo_input)
+            xsd_arquivo = dir_schemas_2
             
     
         print('xsd: ',xsd_arquivo)
