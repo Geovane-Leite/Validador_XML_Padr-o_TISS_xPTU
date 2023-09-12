@@ -28,8 +28,9 @@ for xml_file_path in files:
         xml_content = xml_file.read()
 
         tp_arquivo = str(xml_content).split(':')[1].split(' ')[0].replace('ptu','ptu_')
-        tp_arquivo2 = str(xml_content).split(r"\n<")[1].split(" ")[0].replace('ptu','ptu_')   
-        print("tipo arquivo",tp_arquivo)
+        tp_arquivo2 = str(xml_content).split(r"\n<")[1].split(" ")[0].replace('ptu','ptu_')
+        tp_arquivo3 = str(xml_content).split(r"\n<ptu:")[1].split(" ")[0].replace('ptu','ptu_')
+       
 
         schema_location = re.search(r'xsi:schemaLocation="([^"]+)"', str(xml_content)).group(1)
 
@@ -59,6 +60,7 @@ for xml_file_path in files:
         schemas_1 = os.path.join(schemas, filename)
         schemas_2 = os.path.join(schemas, tp_arquivo+'.xsd')
         schemas_3 = os.path.join(schemas, tp_arquivo2+'.xsd')
+        schemas_4 = os.path.join(schemas, tp_arquivo3+'.xsd')
 
         xsd_arquivo = None 
         # Verifique se cada arquivo existe e pare quando encontrar o primeiro válido
@@ -68,10 +70,12 @@ for xml_file_path in files:
             xsd_arquivo = schemas_2
         elif os.path.isfile(schemas_3):
             xsd_arquivo = schemas_3
-        elif xsd_arquivo == None:
-            tp_arquivo3 = input('Não encontramos o schema, Qual Nome do arquivo XSD? ex: NNNNNN.xsd ')
-            schemas_4 = os.path.join(schemas, tp_arquivo3)
+        elif os.path.isfile(schemas_4):
             xsd_arquivo = schemas_4
+        elif xsd_arquivo == None:
+            tp_arquivo_input = input('Não encontramos o schema, Qual Nome do arquivo XSD? ex: NNNNNN.xsd ')
+            schemas_5 = os.path.join(schemas, tp_arquivo_input)
+            xsd_arquivo = schemas_5
             
     
         print('xsd: ',xsd_arquivo)
