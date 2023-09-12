@@ -28,7 +28,7 @@ for xml_file_path in files:
         xml_content = xml_file.read()
 
         tp_arquivo = str(xml_content).split(':')[1].split(' ')[0].replace('ptu','ptu_')
-
+        tp_arquivo2 = str(xml_content).split(r"\n<")[1].split(" ")[0].replace('ptu','ptu_')   
         print("tipo arquivo",tp_arquivo)
 
         schema_location = re.search(r'xsi:schemaLocation="([^"]+)"', str(xml_content)).group(1)
@@ -46,7 +46,8 @@ for xml_file_path in files:
             prefixo = 'ans'
         elif 'ptu' in schema_location:
             prefixo = 'ptu'
-
+        elif 'ptu' in tp_arquivo2:
+            prefixo = 'ptu'
         root = etree.fromstring(xml_content)
 
         namespace = root.tag.split('}')[0][1:]
@@ -57,16 +58,22 @@ for xml_file_path in files:
      
         schemas_1 = os.path.join(schemas, filename)
         schemas_2 = os.path.join(schemas, tp_arquivo+'.xsd')
-        xsd_arquivo = os.path.join(schemas, tp_arquivo+'.xsd')
-        print(xsd_arquivo)
-        try:
-            if os.path.isfile(schemas_1):
-                xsd_arquivo = os.path.join(schemas, filename)
-        except:    
-            if os.path.isfile(schemas_2):
-                xsd_arquivo = os.path.join(schemas, tp_arquivo+'.xsd')
-                print('qwert ',xsd_arquivo)
-        print("xsd_arquivo: ", filename)
+        schemas_3 = os.path.join(schemas, tp_arquivo2+'.xsd')
+
+        xsd_arquivo = None 
+        # Verifique se cada arquivo existe e pare quando encontrar o primeiro válido
+        if os.path.isfile(schemas_1):
+            xsd_arquivo = schemas_1
+        elif os.path.isfile(schemas_2):
+            xsd_arquivo = schemas_2
+        elif os.path.isfile(schemas_3):
+            xsd_arquivo = schemas_3
+        elif xsd_arquivo == None:
+            tp_arquivo3 = input('Não encontramos o schema, Qual Nome do arquivo XSD? ex: NNNNNN.xsd ')
+            schemas_4 = os.path.join(schemas, tp_arquivo3)
+            xsd_arquivo = schemas_4
+            
+    
         print('xsd: ',xsd_arquivo)
         schema = XMLSchema(xsd_arquivo)
 
