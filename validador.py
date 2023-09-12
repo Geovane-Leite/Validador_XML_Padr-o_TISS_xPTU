@@ -37,20 +37,24 @@ for xml_file_path in files:
             tp_arquivo3 = str(xml_content).split("<ptu:")[1].split(" ")[0].replace('ptu','ptu_')
        
 
-        schema_location = re.search(r'xsi:schemaLocation="([^"]+)"', str(xml_content)).group(1)
-
         try:
-            filename = re.search(r'/([^/]+\.xsd)$', schema_location).group(1)
-        except:
-            filename = schema_location
+            schema_location = re.search(r'xsi:schemaLocation="([^"]+)"', str(xml_content)).group(1)
         
-        filename = filename.split('/')[-1]
-        filename = filename.rsplit(" ", 1)[-1]
+            # Extrai o nome do arquivo XSD
+            try:
+                filename = re.search(r'/([^/]+\.xsd)$', schema_location).group(1)
+            except:
+                filename = schema_location
+            
+            filename = filename.split('/')[-1]
+            filename = filename.rsplit(" ", 1)[-1]
+        except Exception:
+            schema_location = None
         
 
         if 'tiss' in filename:
             prefixo = 'ans'
-        elif 'ptu' in schema_location:
+        elif 'ptu' in filename:
             prefixo = 'ptu'
         elif 'ptu' in tp_arquivo2:
             prefixo = 'ptu'
